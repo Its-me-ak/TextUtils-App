@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 
 export default function Navbar(props) {
   return (
-    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
+    <nav
+      className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+    >
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           {props.title}
@@ -27,14 +29,49 @@ export default function Navbar(props) {
                 Home
               </a>
             </li>
-            {/* <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                {props.aboutText}
-              </Link>
-            </li> */}
           </ul>
+
+          <div className="d-flex">
+            <div
+              className="bg-primary rounded mx-2"
+              onClick={() => {
+                props.toggleMode("primary");
+              }}
+              style={{ height: "30px", width: "30px", cursor: "pointer" }}
+            ></div>
+            <div
+              className="bg-danger rounded mx-2"
+              onClick={() => {
+                props.toggleMode("danger");
+              }}
+              style={{ height: "30px", width: "30px", cursor: "pointer" }}
+            ></div>
+            <div
+              className="bg-success rounded mx-2"
+              onClick={() => {
+                props.toggleMode("success");
+              }}
+              style={{ height: "30px", width: "30px", cursor: "pointer" }}
+            ></div>
+            <div
+              className="bg-warning rounded mx-2"
+              onClick={() => {
+                props.toggleMode("warning");
+              }}
+              style={{ height: "30px", width: "30px", cursor: "pointer" }}
+            ></div>
+          </div>
           <div className="form-check form-switch text-light">
-            <input className="form-check-input" type="checkbox" aria-checked  onClick={props.toggleMode} role="switch" id="flexSwitchCheckDefault"/>
+            <input
+              className="form-check-input"
+              type="checkbox"
+              aria-checked
+              onClick={() => {
+                props.toggleMode(null);
+              }}
+              role="switch"
+              id="flexSwitchCheckDefault"
+            />
           </div>
         </div>
       </div>
@@ -43,9 +80,12 @@ export default function Navbar(props) {
 }
 
 // eslint-disable-next-line react/no-typos
-Navbar.propTypes = { title: PropTypes.string.isRequired, aboutText: PropTypes.string };
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  aboutText: PropTypes.string,
+};
 
 Navbar.defaultProps = {
   title: "Set title here",
-  aboutText: "About Us here"
+  aboutText: "About Us here",
 };

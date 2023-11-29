@@ -31,7 +31,6 @@ export default function Textform(props) {
     text.setSelectionRange(0, 999999);
     navigator.clipboard.writeText(text.value);
     props.showAlert("Text copied to clipboard", "success");
-
   }
 
   const handleChange = (event) => {
@@ -55,30 +54,30 @@ export default function Textform(props) {
             value={text}
             onChange={handleChange}
             style={{
-              backgroundColor: props.mode === "dark" ? "#031624" : "white",
+              backgroundColor: props.mode === "dark" ? "#0d2d46" : "white",
               color: props.mode === "dark" ? "white" : "black",
             }}
           ></textarea>
         </div>
-        <button className="btn btn-primary my-2" onClick={changeToUpper}>
+        <button className="btn btn-primary mx-1 my-1" onClick={changeToUpper}>
           Convert To UpperCase
         </button>
-        <button className="btn btn-primary mx-2 my-2" onClick={changeToLower}>
+        <button className="btn btn-primary mx-1 my-1" onClick={changeToLower}>
           Convert To LowerCase
         </button>
-        <button className="btn btn-primary my-2" onClick={removeSpace}>
+        <button className="btn btn-primary mx-1 my-1" onClick={removeSpace}>
           Remove Extra Spaces
         </button>
-        <button className="btn btn-primary mx-2 my-2" onClick={copyText}>
+        <button className="btn btn-primary mx-1 my-1" onClick={copyText}>
           Copy Text
         </button>
-        <button className="btn btn-primary my-2" onClick={clearText}>
+        <button className="btn btn-primary mx-1 my-1" onClick={clearText}>
           Clear Text
         </button>
 
         <h3 className="mt-5 mb-3">Text Summary</h3>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {text.split(/\s+/).filter((e)=>{return e.length !== 0}).length} words and {text.length} characters
         </p>
         <p>Time to read: {0.008 * text.split(" ").length} minutes</p>
       </div>
